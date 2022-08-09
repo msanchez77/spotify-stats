@@ -12,7 +12,6 @@ import {
 
 
 const App = () => {
-  const [accessToken, setAccessToken] = useState('')
 
   return (
     <main style={{position:"relative"}}>
@@ -20,7 +19,7 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/spotify" element={<p>Hello</p>} />
+        <Route path="/spotify" element={<Spotify />} />
       </Routes>
     </main>
   )
