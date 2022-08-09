@@ -9,33 +9,49 @@ const setAccessToken = (newToken) => {
 }
 
 const login = async () => {
-	const config = {
-		headers: {
-			'Content-Type': 'application/json',
-			'Accept': 'application/json',
-			'Access-Control-Allow-Origin': '*'
-		}
-	}
+	// const config = {
+	// 	headers: {
+	// 		'Content-Type': 'application/json',
+	// 		'Accept': 'application/json',
+	// 		'Access-Control-Allow-Origin': '*'
+	// 	}
+	// }
 
-	const response = await axios.get(`${baseUrl}/login`, config);
+	const response = await axios.get(`${baseUrl}/login`);
 
 	return response.data;
 };
 
-const getPlaylist = async() => {
-	console.log(accessToken)
+const getSong = async() => {
   const config = {
-    headers: { 'Authorization': accessToken, 'Content-Type': 'application/json' },
+    headers: { 
+			'Authorization': accessToken,
+			'Content-Type': 'application/json'
+		 },
   };
 
-	const response = await axios.get(`${apiUrl}/following?type=artist`, config)
+	const response = await axios.get('https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V', config)
+	console.log(response.data)
+	return response.data
+}
 
+const getTopTracks = async() => {
+  const config = {
+    headers: { 
+			'Authorization': accessToken,
+			"Content-Type": "application/json"
+		 },
+  };
+
+	const response = await axios.get('https://api.spotify.com/v1/me/top/tracks', config)
+	console.log(response.data)
 	return response.data
 }
 
 const spotifyService = {
 	setAccessToken,
   login,
-	getPlaylist
+	getSong,
+	getTopTracks
 };
 export default spotifyService;

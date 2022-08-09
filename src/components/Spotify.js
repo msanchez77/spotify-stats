@@ -14,16 +14,24 @@ const Spotify = () => {
 	console.log(params)
 	spotifyService.setAccessToken(params["access_token"]);
 
-	const getTheStuff = async () => {
-		const lists = await spotifyService.getPlaylist();
+	const getSong = async () => {
+		const lists = await spotifyService.getSong();
+	}
 
-		console.log(lists)
+	const getTopTracks = async () => {
+		try {
+			const tracks = await spotifyService.getTopTracks();
+		} catch (e) {
+			console.log("That didn't work!")
+			console.log(e)
+		}
 	}
 
   return (
     <div>
       <p>Spotify is ready.</p>
-			<button onClick={() => getTheStuff()}>Retrieve data</button>
+			<button onClick={() => getSong()}>Retrieve song</button>
+			<button onClick={() => getTopTracks()}>Retrieve Top</button>
     </div>
   )
 }
