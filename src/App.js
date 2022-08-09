@@ -1,8 +1,8 @@
-import React from 'react' // we need this now also in component files
+import React, { useEffect } from 'react' // we need this now also in component files
 
 // Components
 import Login from './components/Login'
-import Spotify from './components/Spotify'
+import UserInfo from './components/UserInfo'
 
 // Hooks
 import { useState } from 'react'
@@ -10,8 +10,31 @@ import {
   Routes, Route, Link, useNavigate
 } from "react-router-dom"
 
+// utils
+import { checkAuth } from './utils/auth'
+
 
 const App = () => {
+
+	const [isAuthenticated, setIsAuthenticated] = useState(null);
+
+	useEffect(() => {
+		const fetchLogged = async () => {
+			try {
+				await checkAuth();
+				setIsAuthenticated(true);
+			} catch (e) {
+				console.log("Authentication failed");
+				setIsAuthenticated(false);
+			}
+		};
+
+		fetchLogged();
+	}, []);
+
+	if (isAuthenticated === null) {
+		return <></>;
+	}
 
   return (
     <main style={{position:"relative"}}>
@@ -19,7 +42,7 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/spotify" element={<Spotify />} />
+        <Route path="/spotify" element={<UserInfo />} />
       </Routes>
     </main>
   )
