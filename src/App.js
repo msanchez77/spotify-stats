@@ -2,7 +2,7 @@ import React, { useEffect } from 'react' // we need this now also in component f
 
 // Components
 import Login from './components/Login'
-import UserInfo from './components/UserInfo'
+import UserPage from './components/UserPage'
 
 // Hooks
 import { useState } from 'react'
@@ -42,7 +42,7 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/spotify" element={<UserInfo />} />
+        <Route path="/spotify" element={<UserPage />} />
       </Routes>
     </main>
   )
