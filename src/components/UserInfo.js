@@ -1,5 +1,6 @@
 import React from 'react' // we need this now also in component files
 
+
 const UserInfo = ({user}) => {
 
   return (
