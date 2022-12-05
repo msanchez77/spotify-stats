@@ -1,0 +1,13 @@
+* {box-sizing: border-box;}
+
+:root {
+  --primary: #162a4c;
+  --secondary: #df4a29;
+  --accent: #f9c02a;
+}
+
+.underlined {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 16px;
+}
