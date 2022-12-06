@@ -12,6 +12,7 @@ import {
 
 // utils
 import { checkAuth } from './utils/auth'
+import ButtonAppBar from './components/NavMenu'
 
 
 const App = () => {
@@ -38,6 +39,8 @@ const App = () => {
 
   return (
     <main style={{position:"relative"}}>
+			<ButtonAppBar />
+
       <h1>Matt Sanchez Spotify App</h1>
 
       <Routes>
